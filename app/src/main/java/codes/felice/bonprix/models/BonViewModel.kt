@@ -23,6 +23,8 @@ class BonViewModel: ViewModel() {
 
     var categoryListResponse: List<Category> by mutableStateOf(listOf())
 
+    var image: String = ""
+
     fun updateNavigation() {
         RetrofitService()
             .getBonPrixServiceCall()

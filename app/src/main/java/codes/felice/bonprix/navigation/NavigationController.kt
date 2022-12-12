@@ -1,5 +1,6 @@
 package codes.felice.bonprix.navigation
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,6 +15,12 @@ fun NavigationController(viewModel: BonViewModel) {
 
     val navController = rememberNavController()
     viewModel.navController = navController
+
+    BackHandler(enabled = true) {
+        viewModel.categories.removeLast()
+        viewModel.title.value = viewModel.categories.lastOrNull()?.label ?: "bonprix"
+        navController.popBackStack()
+    }
 
     NavHost(navController = navController, startDestination = Screen.Overview.route) {
 

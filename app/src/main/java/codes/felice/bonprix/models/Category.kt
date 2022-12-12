@@ -12,5 +12,5 @@ data class Category (
     @SerialName("image")
     val image: String? = null,
     @SerialName("children")
-    val subCategories: List<Category>? = null
+    val children: List<Category>? = null
 )

@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import codes.felice.bonprix.R
 import codes.felice.bonprix.models.BonViewModel
 import codes.felice.bonprix.models.Category
+import codes.felice.bonprix.navigation.Screen
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 
@@ -35,7 +36,13 @@ fun CategoryListItem(category: Category, viewModel: BonViewModel) {
             onClick = {
                 viewModel.categories.add(category)
                 viewModel.title.value = viewModel.categories.lastOrNull()?.label ?: "bonprix"
+                category.children?.let {
+                    viewModel.image = img
+                    viewModel.navController.navigate(Screen.Category.route)
+                    return@Button
+                }
 
+                //TODO: viewModel.navController.navigate(Screen.WebView.route)
             },
             modifier = Modifier
                 .fillMaxWidth()
