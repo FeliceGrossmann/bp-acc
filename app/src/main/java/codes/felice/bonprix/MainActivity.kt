@@ -4,13 +4,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import codes.felice.bonprix.models.BonViewModel
 import codes.felice.bonprix.navigation.NavigationController
 import codes.felice.bonprix.ui.theme.AndroidCodeChellangeBonprixTheme
@@ -22,8 +28,39 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
+            var title by remember { mutableStateOf("bonprix") }
+
             AndroidCodeChellangeBonprixTheme {
-                NavigationController(viewModel = viewModel)
+                Column(
+                    modifier = Modifier
+                        .padding(
+                            top = 6.dp,
+                            start = 12.dp
+                        )
+                ) {
+                    Text(
+                        text = title,
+                        style = TextStyle(
+                            fontSize = 36.sp,
+                            fontFamily = FontFamily(
+                                Font(R.font.javatext)
+                            )
+                        )
+                    )
+                }
+                Column(
+                    modifier = Modifier.padding(top = 80.dp)
+                ) {
+                    NavigationController(viewModel = viewModel)
+                }
+
+                viewModel.updateNavigation()
+
+                viewModel._title.observe(this) {
+                    title = it
+                }
+
             }
         }
     }
