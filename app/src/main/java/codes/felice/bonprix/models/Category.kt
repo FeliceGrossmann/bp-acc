@@ -8,9 +8,9 @@ data class Category (
     @SerialName("label")
     val label: String,
     @SerialName("url")
-    val url: String,
+    val url: String? = null,
     @SerialName("image")
-    val image: String?,
+    val image: String? = null,
     @SerialName("children")
-    val subCategories: List<Category>
+    val subCategories: List<Category>? = null
 )

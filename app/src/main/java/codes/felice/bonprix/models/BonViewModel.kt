@@ -1,9 +1,40 @@
 package codes.felice.bonprix.models
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import codes.felice.bonprix.services.RetrofitService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BonViewModel: ViewModel() {
 
-    //TODO("fill with stuff")
+    var categoryListResponse: List<Category> by mutableStateOf(listOf())
+
+    fun updateNavigation() {
+        RetrofitService()
+            .getBonPrixServiceCall()
+            .enqueue(
+                object : Callback<CategoryResponse> {
+
+                    override fun onResponse(
+                        call: Call<CategoryResponse>,
+                        response: Response<CategoryResponse>
+                    ) {
+                        response.body()?.let {
+                            categoryListResponse = it.categories
+                        }
+                    }
+
+                    override fun onFailure(call: Call<CategoryResponse>, t: Throwable) {
+                        categoryListResponse = listOf(Category("Es wurden keine Elemente gefunden."))
+                    }
+
+                }
+            )
+    }
+
 
 }
