@@ -33,12 +33,13 @@ fun SubCategoryListItem(category: Category, viewModel: BonViewModel) {
         onClick = {
             viewModel.categories.add(category)
             viewModel.title.value = viewModel.categories.last().label
+            viewModel.url = viewModel.categories.lastOrNull()?.url ?: "https://bonprix.de/"
             category.children?.let {
                 viewModel.navController.navigate(Screen.Category.route)
                 return@Button
             }
 
-            //TODO: viewModel.navController.navigate(Screen.WebView.route)
+            viewModel.navController.navigate(Screen.WebView.route)
         },
         modifier = Modifier
             .fillMaxWidth()

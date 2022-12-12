@@ -25,6 +25,8 @@ class BonViewModel: ViewModel() {
 
     var image: String = ""
 
+    var url: String = "https://bonprix.de/"
+
     fun updateNavigation() {
         RetrofitService()
             .getBonPrixServiceCall()
