@@ -1,0 +1,3 @@
+Am Anfang war es für mich wichtig, dass ich Compose zumindest grundlegend kennenlerne. Anschließend habe ich mir angeschaut, wie man einen NavigationController und eine WebView in mit Compose erstellt.
+
+Nachdem ich in Figma ein Prototyp erstellt habe, habe ich mir überlegt, wie meine Datenklassen aussehen müssen, damit ich alles korrekt darstellen kann. Basierend darauf konnte ich die Views erstellen und nach und nach miteinander verbinden. Zwischendurch habe ich auf meinem Handy getestet (Samsung Galaxy A30s). Ich wollte beim Design möglichst nah an die Vorlage auf Github herankommen, um mehr Designelemente von Compose zu erlernen.
