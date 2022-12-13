@@ -1,6 +1,5 @@
 package codes.felice.bonprix.services
 
-import codes.felice.bonprix.models.Category
 import codes.felice.bonprix.models.CategoryResponse
 import retrofit2.Call
 import retrofit2.Retrofit

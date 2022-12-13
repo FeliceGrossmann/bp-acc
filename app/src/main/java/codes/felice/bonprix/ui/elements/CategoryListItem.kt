@@ -35,8 +35,8 @@ fun CategoryListItem(category: Category, viewModel: BonViewModel) {
         Button(
             onClick = {
                 viewModel.categories.add(category)
-                viewModel.title.value = viewModel.categories.lastOrNull()?.label ?: "bonprix"
-                viewModel.url = viewModel.categories.lastOrNull()?.url ?: "https://bonprix.de/"
+                viewModel.title.value = viewModel.categories.lastOrNull()?.label ?: viewModel.navController.context.getString(R.string.label)
+                viewModel.url = viewModel.categories.lastOrNull()?.url ?: viewModel.navController.context.getString(R.string.base_url)
                 category.children?.let {
                     viewModel.image = img
                     viewModel.navController.navigate(Screen.Category.route)

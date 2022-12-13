@@ -33,7 +33,7 @@ fun SubCategoryListItem(category: Category, viewModel: BonViewModel) {
         onClick = {
             viewModel.categories.add(category)
             viewModel.title.value = viewModel.categories.last().label
-            viewModel.url = viewModel.categories.lastOrNull()?.url ?: "https://bonprix.de/"
+            viewModel.url = viewModel.categories.lastOrNull()?.url ?: viewModel.navController.context.getString(R.string.base_url)
             category.children?.let {
                 viewModel.navController.navigate(Screen.Category.route)
                 return@Button

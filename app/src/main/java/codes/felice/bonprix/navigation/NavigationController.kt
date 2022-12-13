@@ -5,6 +5,7 @@ import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import codes.felice.bonprix.R
 import codes.felice.bonprix.models.BonViewModel
 import codes.felice.bonprix.ui.screen.CategoryScreen
 import codes.felice.bonprix.ui.screen.OverviewScreen
@@ -22,7 +23,7 @@ fun NavigationController(viewModel: BonViewModel) {
 
     BackHandler(enabled = true) {
         viewModel.categories.removeLast()
-        viewModel.title.value = viewModel.categories.lastOrNull()?.label ?: "bonprix"
+        viewModel.title.value = viewModel.categories.lastOrNull()?.label ?: navController.context.getString(R.string.label)
         navController.popBackStack()
     }
 

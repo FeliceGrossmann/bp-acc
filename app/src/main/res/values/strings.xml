@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AndroidCodeChellangeBonprix</string>
+    <string name="app_name">AndroidCodeChallengeBonprix</string>
+    <string name="label">bonprix</string>
+    <string name="base_url">https://bonprix.de/</string>
 </resources>

@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            var title by remember { mutableStateOf("bonprix") }
+            var title by remember { mutableStateOf(getString(R.string.label)) }
 
             AndroidCodeChellangeBonprixTheme {
                 Column(
